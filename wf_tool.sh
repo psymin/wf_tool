@@ -182,7 +182,7 @@ wf_usage () {
 
 wf_stop () {
 
-  screen -r warfork -X quit
+  screen -S warfork -X stuff 'quit'$(echo -ne '\015')
 
 }
 
