@@ -95,7 +95,7 @@ wf_setup () {
 wf_cron () {
 
   #Add a cronjob to the user to update and start server."
-  echo "*/5 * * * * ${HOMEDIR}wf_tool.sh update
+  echo "*/5 * * * * ${HOMEDIR}/wf_tool.sh update
 @reboot ${HOMEDIR}/wf_tool.sh start" | /usr/bin/crontab
 
 }
