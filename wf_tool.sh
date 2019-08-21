@@ -95,8 +95,18 @@ wf_setup () {
 wf_cron () {
 
   #Add a cronjob to the user to update and start server."
-  echo "*/5 * * * * ${HOMEDIR}/wf_tool.sh update
+  CRON=`crontab -l`
+  if [[ $CRON == "" ]]
+  then
+    echo "*/5 * * * * ${HOMEDIR}/wf_tool.sh update
 @reboot ${HOMEDIR}/wf_tool.sh start" | /usr/bin/crontab
+  else
+    echo "crontab for your user is not empty"
+    echo "manually set your crontab using crontab -e"
+    echo
+    echo "*/5 * * * * ${HOMEDIR}/wf_tool.sh update"
+    echo "@reboot ${HOMEDIR}/wf_tool.sh start"
+  fi
 
 }
 
