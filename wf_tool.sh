@@ -9,7 +9,7 @@
 USERNAME="anonymous"	# Your steam username
 PASSWORD=""		# Your steam password
 
-APPID="671610"		# The appid of the warfork server (this will change
+APPID="1136510"		# The appid of the warfork server (this will change
 			# in the future to a dedicated tool that can be fetched
 			# anonymously
 HOMEDIR=`eval echo ~$USER`
