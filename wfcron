@@ -1,0 +1,21 @@
+# Start wfserver on boot
+
+@reboot '/home/wf/wfserver start' > /dev/null 2>&1
+
+# Check the status of wfserver every five minutes
+# If crashed, send alerts and restart the daemon
+
+*/5 * * * *  /home/wf/wfserver monitor > /dev/null 2>&1
+
+# INFO: To configure alerting look at the variables in:
+# INFO: lgsm/config-lgsm/wfserver/_default.cfg
+# INFO: Don't modify those variables.  Set them in:
+# INFO: lgsm/config-lgsm/wfserver/wfserver.cfg
+
+# Check for updates to wfserver and download/apply if found
+
+*/30 * * * * /home/wf/wfserver update > /dev/null 2>&1
+
+# Update the LinuxGSM scripts every Sunday at midnight
+
+0 0 * * 0 /home/wf/wfserver update-functions > /dev/null 2>&1
