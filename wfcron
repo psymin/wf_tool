@@ -1,11 +1,17 @@
 # Start wfserver on boot
 
 @reboot '/home/wf/wfserver start' > /dev/null 2>&1
+#@reboot '/home/wf/wfserver-2 start' > /dev/null 2>&1
+#@reboot '/home/wf/wfserver-3 start' > /dev/null 2>&1
+#@reboot '/home/wf/wfserver-4 start' > /dev/null 2>&1
 
 # Check the status of wfserver every five minutes
 # If crashed, send alerts and restart the daemon
 
 */5 * * * *  /home/wf/wfserver monitor > /dev/null 2>&1
+#*/5 * * * *  /home/wf/wfserver-2 monitor > /dev/null 2>&1
+#*/5 * * * *  /home/wf/wfserver-3 monitor > /dev/null 2>&1
+#*/5 * * * *  /home/wf/wfserver-4 monitor > /dev/null 2>&1
 
 # INFO: To configure alerting look at the variables in:
 # INFO: lgsm/config-lgsm/wfserver/_default.cfg
@@ -19,3 +25,20 @@
 # Update the LinuxGSM scripts every Sunday at midnight
 
 0 0 * * 0 /home/wf/wfserver update-functions > /dev/null 2>&1
+
+##############################################################
+#
+#              field          allowed values
+#              -----          --------------
+#              minute         0-59
+#              hour           0-23
+#              day of month   1-31
+#              month          1-12 (or names, see below)
+#              day of week    0-7 (0 or 7 is Sun, or use names)
+#
+# min hour dom mon dow usercommand
+# *   *    *   *   *   blah.sh 
+#
+#  wf@games:~$ man 5 crontab
+#
+#  https://docs.linuxgsm.com/configuration/cronjobs
