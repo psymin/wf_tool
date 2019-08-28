@@ -1,17 +1,17 @@
 # Start wfserver on boot
 
-@reboot '/home/wf/wfserver start' > /dev/null 2>&1
-#@reboot '/home/wf/wfserver-2 start' > /dev/null 2>&1
-#@reboot '/home/wf/wfserver-3 start' > /dev/null 2>&1
-#@reboot '/home/wf/wfserver-4 start' > /dev/null 2>&1
+@reboot ~/wfserver start > /dev/null 2>&1
+#@reboot '~/wfserver-2 start' > /dev/null 2>&1
+#@reboot '~/wfserver-3 start' > /dev/null 2>&1
+#@reboot '~/wfserver-4 start' > /dev/null 2>&1
 
 # Check the status of wfserver every five minutes
 # If crashed, send alerts and restart the daemon
 
-*/5 * * * *  /home/wf/wfserver monitor > /dev/null 2>&1
-#*/5 * * * *  /home/wf/wfserver-2 monitor > /dev/null 2>&1
-#*/5 * * * *  /home/wf/wfserver-3 monitor > /dev/null 2>&1
-#*/5 * * * *  /home/wf/wfserver-4 monitor > /dev/null 2>&1
+*/5 * * * *  ~/wfserver monitor > /dev/null 2>&1
+#*/5 * * * *  ~/wfserver-2 monitor > /dev/null 2>&1
+#*/5 * * * *  ~/wfserver-3 monitor > /dev/null 2>&1
+#*/5 * * * *  ~/wfserver-4 monitor > /dev/null 2>&1
 
 # INFO: To configure alerting look at the variables in:
 # INFO: lgsm/config-lgsm/wfserver/_default.cfg
@@ -20,11 +20,11 @@
 
 # Check for updates to wfserver and download/apply if found
 
-*/30 * * * * /home/wf/wfserver update > /dev/null 2>&1
+*/30 * * * * ~/wfserver update > /dev/null 2>&1
 
 # Update the LinuxGSM scripts every Sunday at midnight
 
-0 0 * * 0 /home/wf/wfserver update-functions > /dev/null 2>&1
+0 0 * * 0 ~/wfserver update-functions > /dev/null 2>&1
 
 ##############################################################
 #
