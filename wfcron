@@ -1,9 +1,9 @@
 # Start wfserver on boot
 
 @reboot ~/wfserver start > /dev/null 2>&1
-#@reboot '~/wfserver-2 start' > /dev/null 2>&1
-#@reboot '~/wfserver-3 start' > /dev/null 2>&1
-#@reboot '~/wfserver-4 start' > /dev/null 2>&1
+#@reboot ~/wfserver-2 start > /dev/null 2>&1
+#@reboot ~/wfserver-3 start > /dev/null 2>&1
+#@reboot ~/wfserver-4 start > /dev/null 2>&1
 
 # Check the status of wfserver every five minutes
 # If crashed, send alerts and restart the daemon
@@ -20,7 +20,7 @@
 
 # Check for updates to wfserver and download/apply if found
 
-*/30 * * * * ~/wfserver update > /dev/null 2>&1
+*/30 * * * * ~/wfserver safe-update > /dev/null 2>&1
 
 # Update the LinuxGSM scripts every Sunday at midnight
 
