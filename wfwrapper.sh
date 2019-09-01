@@ -32,7 +32,7 @@ su -c 'npm install gamedig -g' wf
 # interaction shouldn't be necessary
 # LinuxGSM does prompt for interaction at times if there are issues
 
-sudo -u wf ~wf/wfserver auto-install
+sudo -i -u wf ~wf/wfserver auto-install
 
 # do the ip stuff here
 # setting it static for now
@@ -63,20 +63,20 @@ then
 
   ip=${arr[0]}
 
-  sudo -u wf echo ip=\"${ip}\" >> ~wf/lgsm/config-lgsm/wfserver/common.cfg
+  sudo -i -u wf echo ip=\"${ip}\" >> ~wf/lgsm/config-lgsm/wfserver/common.cfg
   chown wf.wf ~wf/lgsm/config-lgsm/wfserver/common.cfg
 
 fi
 
 # show details output, verify ip error isn't there
 
-sudo -u wf ~wf/wfserver details
+sudo -i -u wf ~wf/wfserver details
 
-sudo -u wf ~wf/wfserver start
+sudo -i -u wf ~wf/wfserver start
 
-sudo -u wf ~wf/wfserver postdetails
+#sudo -i -u wf ~wf/wfserver postdetails
 
-sudo -u wf ~wf/wfserver postconsole
+#sudo -i -u wf ~wf/wfserver postconsole
 
 # setting crontabs
 
