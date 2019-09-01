@@ -35,7 +35,6 @@ su -c 'npm install gamedig -g' wf
 sudo -i -u wf ~wf/wfserver auto-install
 
 # do the ip stuff here
-# setting it static for now
 
 declare -a arr
 
@@ -56,6 +55,8 @@ then
     then
       arr+=("${ip}")
     fi
+
+    # what do we do if there are multiple IPs and they're all private?
 
   done
 
