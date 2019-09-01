@@ -37,8 +37,6 @@ sudo -i -u wf ~wf/wfserver auto-install
 # do the ip stuff here
 # setting it static for now
 
-#!/bin/bash
-  
 declare -a arr
 
 addresses=`ip -4 addr list | grep inet | grep -v 127.0.0 | wc -l`
