@@ -37,10 +37,36 @@ sudo -u wf ~wf/wfserver auto-install
 # do the ip stuff here
 # setting it static for now
 
-ip="157.230.219.82"
+#!/bin/bash
+  
+declare -a arr
 
-sudo -u wf echo ip=\"${ip}\" >> ~wf/lgsm/config-lgsm/wfserver/common.cfg
-chown wf.wf ~wf/lgsm/config-lgsm/wfserver/common.cfg
+addresses=`ip -4 addr list | grep inet | grep -v 127.0.0 | wc -l`
+
+if [[ ${addresses} -gt 1 ]]
+then
+  echo found more than one IP to use
+  echo assigning first public IP found
+
+
+  for ip in `ip -br -o -4 addr list | grep UP | awk '{$1=""; $2=""; print $0}' | sed -e 's/\/[0-9]*//g'`
+  do
+
+    ipcalc -n -b ${ip} | grep "Private\|Loopback" 1> /dev/null
+
+    if [[ $? != 0 ]]
+    then
+      arr+=("${ip}")
+    fi
+
+  done
+
+  ip=${arr[0]}
+
+  sudo -u wf echo ip=\"${ip}\" >> ~wf/lgsm/config-lgsm/wfserver/common.cfg
+  chown wf.wf ~wf/lgsm/config-lgsm/wfserver/common.cfg
+
+fi
 
 # show details output, verify ip error isn't there
 
