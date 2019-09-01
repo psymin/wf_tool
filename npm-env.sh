@@ -10,4 +10,4 @@ echo "PATH=\"\$HOME/.node/bin:\$PATH\"" >> ~/.profile
 echo "NODE_PATH=\"\$HOME/.node/lib/node_modules:\$NODE_PATH\"" >> ~/.profile
 echo "MANPATH=\"\$HOME/.node/share/man:\$MANPATH\"" >> ~/.profile
 
-npm install gamedig -g
+#npm install gamedig -g
