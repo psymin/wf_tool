@@ -6,7 +6,7 @@
 
 dpkg --add-architecture i386; sudo apt -y update
 
-apt -y install curl wget ca-certificates file bsdmainutils util-linux python bzip2 gzip unzip binutils bc jq tmux lib32gcc1 libstdc++6:i386 npm ipcalc ufw traceroute
+apt -y install curl wget ca-certificates file bsdmainutils util-linux python bzip2 gzip unzip binutils bc jq tmux lib32gcc1 libstdc++6:i386 npm ipcalc ufw traceroute npm
 
 useradd -m wf -k /etc/skel -s /bin/bash
 
