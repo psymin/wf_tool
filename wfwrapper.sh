@@ -1,7 +1,15 @@
 #!/bin/bash
 
-# might be nice to do this with a ${USER} variable instead of static wf
+# (I apologize for the mess of this script)
 
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+
+
+# might be nice to do this with a ${USER} variable instead of static wf
 # call this script with sudo
 
 dpkg --add-architecture i386; sudo apt -y update
